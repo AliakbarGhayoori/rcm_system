@@ -1,4 +1,5 @@
-#What is this?
+# What is this?
+
 based on which type of RCM is chosen to be implemented(collaborative, content based, hybrid or latent factor) different kind of dataset should be available. For collaborative RCM having rating matrix of User_Item is mandatory, For Content-based RCM having two dataset containing Users and Items information and one dataset include Users previous selections among Items are mandatory. Also with having all mentioned datasets we can implement hybrid RCM that probably has better accuracy.
 
 this engine default dataset format is Pandas Dataframe. Different Databases or different types of data storings needs rendering for convert them to suitable Pandas Dataframe that is used in next parts of engine. for using this engine user should convert its dataSet to this format. In this part in the first we convert netflix dataset(each movie in txt file that contains Item-User_rating for that movie) to this format and in future steps maybe implementation of other other conversions will be implemented.
