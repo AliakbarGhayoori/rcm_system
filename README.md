@@ -7,4 +7,5 @@ This is just a repo for storing Recommender System engine codes and primary docs
 
 ## Primary Designing
 As mentioned we want to implement RCM engine. so each user with different datasets should be able to implement this engine on his/her target dataset and with giving this dataset as an input, evaluate different recommendation algorithms on his/her dataset.
-So as an Input Model Class get two matrix in Pandas Dataframe format.(todo: link to pandas) 
+### Todo: input format explaining-Neo4j-surprise scikit learn-component analyze of different part of engine
+ 
