@@ -1,4 +1,3 @@
-
 from surprise import prediction_algorithms
 from surprise.model_selection.split import train_test_split
 from surprise.model_selection import cross_validate
@@ -67,10 +66,28 @@ class PredictionModel:
 
         return self.knnPred({'name':sim, 'user_based':user_based, 'shrinkage': shrinkage}, k, min_k)
 
+    def slopeOne(self):
+        pred = prediction_algorithms.slope_one.SlopeOne()
+        return pred
 
+
+    def coCluster(self):
+        pred = prediction_algorithms.co_clustering.CoClustering(verbose= True)
+        return pred
 
     def knnPred(self,sim_options, k = 40, min_k= 1):
         pred = prediction_algorithms.knns.KNNBasic(k=k, min_k=min_k, sim_options= sim_options)
+        return pred
+
+    def SVDMatrixFact(self, n_factors = 100, n_epochs = 20, biased = True, init_mean = 0, init_std = 0.1, lr = 0.05, reg = 0.02):
+        pred = prediction_algorithms.matrix_factorization.SVD(n_factors=n_factors, n_epochs=n_epochs, biased=biased,
+                                                              init_mean=init_mean, init_std_dev= init_std, lr_all = lr, reg_all = reg)
+        return pred
+
+
+    def SVDPPMatrixFact(self, n_factors = 100, n_epochs = 20, biased = True, init_mean = 0, init_std = 0.1, lr = 0.05, reg = 0.02):
+        pred = prediction_algorithms.matrix_factorization.SVDpp(n_factors=n_factors, n_epochs=n_epochs, biased=biased,
+                                                              init_mean=init_mean, init_std_dev= init_std, lr_all = lr, reg_all = reg)
         return pred
 
 
@@ -83,4 +100,3 @@ class PredictionModel:
         result['error'] = abs(result['base_event'] - result['predict_event'])
         cross_validate(predictor, self.dataTuning, measures=['RMSE', 'MAE'], cv=5, verbose=True)
         print(result.head())
-
